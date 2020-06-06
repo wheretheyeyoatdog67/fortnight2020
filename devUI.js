@@ -9,7 +9,7 @@ function devUI(){
   button2.position(260, 30);
   button2.mousePressed(spawnEnemies);
   button4 = createButton('Ramp Mode');
-  button4.position(290, 70);
+  button4.position(260, 70);
   button4.mousePressed(rampModeTog);
   button3 = createButton('Restart');
   button3.position(312, 10);
@@ -42,8 +42,10 @@ function cellUI(){
   noStroke();
 }
 function specBarUI(){
+  stroke(255);
   fill(255- 2.5*specBar,0,0);
-  rect(260,65,20,1.5*specBar);
+  rect(260,90,20,1.3*specBar);
+  noStroke();
 }
 function death(){
 
