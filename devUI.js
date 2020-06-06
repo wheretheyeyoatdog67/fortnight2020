@@ -68,6 +68,6 @@ function hearts(){
 
   imageMode(CENTER);
   for (let i = 0; i < player.lives;i++){
-  image(heart, 200+i*20, 10, 20,20);
+  image(heart, 240-i*20, 10, 20,20);
   }imageMode(CORNER);
 }

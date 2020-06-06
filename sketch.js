@@ -12,6 +12,7 @@ let specBar = 100;
 let round = 1;
 var timerValue = 10;
 let ramp = false;
+let groundItems = [];
 function preload() {
   img = loadImage('floor.png');
   slime = loadImage('slime.png');
@@ -82,7 +83,15 @@ for (let i = 0;i<enemies.length;i++){
   enemies[i].bullCol(projectile)
   enemies[i].specCol(special);
   if (enemies[i].isHit == true){
+    enemies[i].onKill();
     enemies.splice(i,1);
+  }
+}
+for (let i = 0;i<groundItems.length;i++){
+  ellipse(groundItems[i][1],groundItems[i][2],20,20);
+  if(dist(player.x,player.y,groundItems[i][1],groundItems[i][2])<20){
+    player.lives +=1;
+    groundItems.splice(i,1);
   }
 }
 for (let i = 0;i<enemies.length;i++){

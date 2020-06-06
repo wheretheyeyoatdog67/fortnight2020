@@ -111,6 +111,12 @@ class enemy{
       }
     }
   }
+  onKill(){
+    let l = random(0,1);
+    if(l>.90){
+      groundItems.push([1,this.x,this.y]);
+    }
+  }
   specCol(special){
     for(let i = 0;i<special.length;i++){
       if ((dist(special[i].x,special[i].y,this.x,this.y))<30){
