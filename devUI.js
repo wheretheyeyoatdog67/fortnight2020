@@ -22,7 +22,8 @@ function devUI(){
 }
 function rampModeTog(){
   if (ramp == true)ramp = false;
-  else ramp = true;
+  else {ramp = true;
+  song.play();}
 }
 function rampMode(){
   if (enemies.length == 0){
