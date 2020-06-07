@@ -44,7 +44,7 @@ function setup() {
   gun = new gun(player);
   board = new board();
   devUI();
-  song.play();
+  
 }
 
 // STEP 2 classify!

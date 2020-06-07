@@ -1,4 +1,5 @@
 function devUI(){
+  song.play();
   button = createButton('CellUI');
   button.position(260, 10);
   button.mousePressed(cellUIflopper);
@@ -68,13 +69,14 @@ function death(){
 
 }
 function restart(){
+  if (player.isDead ==true){
   player.isDead = false;
   enemies = [];
   round = 1;
   specBar = 100;
   player.lives = 3;
   song.play();
-  score = 0;
+  score = 0;}
 }
 function hearts(){
 
