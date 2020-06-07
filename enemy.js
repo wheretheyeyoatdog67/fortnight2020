@@ -11,13 +11,14 @@ class enemy{
     this.specialHit = false;
     this.iter = 0;
     this.mult = -1;
+    this.randMut = random(1,1.2);
     this.health = 100;
 
 
   }
   display(){
     imageMode(CENTER);
-    image(slime, this.x, this.y, this.diameter ,this.diameter);
+    image(slime, this.x, this.y, this.diameter*this.randMut,this.diameter*this.randMut);
     fill(255,0,0)
     rect(this.x-10,this.y+10,20,5);
     fill(0,255,0);
@@ -68,6 +69,7 @@ class enemy{
 
       if (this.health <= 0){
         this.isHit = true;
+        score += 50;
       }
       this.x += this.vx;
       this.y += this.vy;
@@ -104,9 +106,9 @@ class enemy{
       let lX = projectile[i].projLoc[0]
       let qY = projectile[i].projLoc[1]
       if (dist(this.x,this.y,lX,qY) < 10){
-        this.health -= 25;
+        this.health -= 35;
         //this.isHit = true;
-        specBar += 10;
+        specBar += 3;
 
       }
     }

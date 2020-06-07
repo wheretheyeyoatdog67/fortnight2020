@@ -14,6 +14,10 @@ function devUI(){
   button3 = createButton('Restart');
   button3.position(312, 10);
   button3.mousePressed(restart);
+  // buttonb = createButton('BUY');
+  // buttonb.position(33, 85);
+
+
 }
 function rampModeTog(){
   if (ramp == true)ramp = false;
@@ -51,7 +55,13 @@ function death(){
 
   textSize(40);
   stroke(255);
+
+  noStroke();
+  let c = color(100, 100, 100, 102);
+  fill(c);
+  rect(0,0,250,250);
   fill(255,0,0);
+  stroke(0,0,0);
   text("YOU DIED", 25, 50);
   noFill();
   noStroke();
@@ -63,6 +73,8 @@ function restart(){
   round = 1;
   specBar = 100;
   player.lives = 3;
+  song.play();
+  score = 0;
 }
 function hearts(){
 
@@ -70,4 +82,34 @@ function hearts(){
   for (let i = 0; i < player.lives;i++){
   image(heart, 240-i*20, 10, 20,20);
   }imageMode(CORNER);
+}
+
+function store(){
+  image(market,320,130,70,70);
+  if(dist(player.x,player.y,365,175)< 120){
+    displayShopContents();
+    inShop = true;
+  }
+  else inShop = false;
+
+}
+
+function displayShopContents(){
+  fill(70,70,70);
+  rect(20,20,200,200);
+  fill(90,90,90);
+  rect(22,22,196,196);
+  fill(165,42,42);
+  stroke(255,0,0);
+  text("Le Me : S h o P P E", 32,40);
+  text("---------------------------", 32,49);
+  fill(255);
+  stroke(255,255,0);
+  text("Big Gun: 2000 Points", 25,70);
+}
+function biggunbuy(){
+  gunW += 10;
+  gunH += 10;
+
+
 }

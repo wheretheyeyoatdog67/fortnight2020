@@ -17,6 +17,7 @@ class proj{
     translate(this.x,this.y);
     rotate(this.rot);
     //dist(this.x+50,this.y,this.desX,this.desY)
+    stroke(255,0,0);
     rect(this.offset+this.it,0,15,4);
 
     pop();

@@ -12,18 +12,29 @@ let specBar = 100;
 let round = 1;
 var timerValue = 10;
 let ramp = false;
+let score = 0;
 let groundItems = [];
+let gunX=16;
+let gunY= 0;
+let gunW= 8;
+let gunH=5;
+let inShop = false;
 function preload() {
   img = loadImage('floor.png');
   slime = loadImage('slime.png');
   heart = loadImage('heart.png');
+  market = loadImage('market.png');
   doge = loadImage('doge.jpg');
+  song = loadSound('h.mp3');
+  songdmg = loadSound('dmg.mp3');
+  songdeath = loadSound('death.mp3');
+
 }
 
 
 
 function setup() {
-
+  song.play();
   createCanvas(canvWid, canvHeight);
   player = new player();
   player.lives = 3;
@@ -51,7 +62,7 @@ grass();
 if (cellUIflop == true){
   cellUI();
 }
-
+store();
 player.display();
 gun.disp(player)
 if(!player.isDead){
@@ -69,6 +80,12 @@ stroke(126);
 text("Round:", 290, 100);
 text(round-1,330, 100)
 stroke(126);
+fill(0);
+textSize(20);
+text("Score:", 5,245);
+stroke(255,0,0);
+text(score, 80,245);
+
 //line(player.x,player.y, mouseX,mouseY);
 noStroke();
 for(let i = 0;i<projectile.length;i++){
@@ -102,6 +119,9 @@ for (let i = 0;i<enemies.length;i++){
 //console.log(player.immunity);
     if (player.lives == 0)
     {player.isDead = true;
+    song.pause();
+    songdeath.play();
+
     }
 
 }
@@ -124,6 +144,7 @@ for (let i = 0; i < special.length; i ++){
 
 specBarUI();
 hearts();
+
 if (ramp== true) rampMode();
 }
 function immunity(){
@@ -163,7 +184,7 @@ class gun{
 
     rotate(rotFact);
     stroke(255);
-    rect(10,0,20,10)
+    rect(gunX,gunY,gunW,gunH);
     noStroke();
     pop();
   }
@@ -200,4 +221,9 @@ class player{
 
 function mouseClicked() {
   projectile.push(new proj(player.x, player.y,mouseX,mouseY));
+
+  if(inShop == true){
+    console.log(mouseX);
+    console.log(mouseY);
+  }
 }
