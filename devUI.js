@@ -64,6 +64,7 @@ function death(){
   fill(255,0,0);
   stroke(0,0,0);
   text("YOU DIED", 25, 50);
+  song.pause();
   noFill();
   noStroke();
 
