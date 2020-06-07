@@ -1,5 +1,5 @@
 function devUI(){
-  song.play();
+
   button = createButton('CellUI');
   button.position(260, 10);
   button.mousePressed(cellUIflopper);
@@ -23,7 +23,7 @@ function devUI(){
 function rampModeTog(){
   if (ramp == true)ramp = false;
   else {ramp = true;
-  song.play();}
+}
 }
 function rampMode(){
   if (enemies.length == 0){
