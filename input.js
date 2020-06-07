@@ -15,8 +15,21 @@ function keyDown() {
       specBar -= 2;}
       if (specBar > 0){
       special.push(new specialProj(player.x,player.y));
+
       }
   }
+  if (keyIsDown(69)) {
+
+    if(gameClock - lastTele > 10){
+    px = player.x;
+    py = player.y;
+    player.x = mouseX;
+    player.y = mouseY;
+    teleArr.push(new tele(px,py,mouseX,mouseY));
+    lastTele = gameClock;}
+  }
+
+
 }
 function mouseClicked(event) {
   projectile.push(new proj(player.x, player.y,mouseX,mouseY));

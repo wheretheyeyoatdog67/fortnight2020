@@ -86,9 +86,11 @@ function hearts(){
 
 function store(){
   image(market,320,130,70,70);
+
   if(dist(player.x,player.y,365,175)< 120){
     displayShopContents();
     inShop = true;
+
   }
   else inShop = false;
 
@@ -110,6 +112,4 @@ function displayShopContents(){
 function biggunbuy(){
   gunW += 10;
   gunH += 10;
-
-
 }

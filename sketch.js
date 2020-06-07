@@ -19,6 +19,9 @@ let gunY= 0;
 let gunW= 8;
 let gunH=5;
 let inShop = false;
+let teleArr = [];
+let lastTele = 10;
+let fcheck = 200;
 function preload() {
   img = loadImage('floor.png');
   slime = loadImage('slime.png');
@@ -34,14 +37,14 @@ function preload() {
 
 
 function setup() {
-  song.play();
+
   createCanvas(canvWid, canvHeight);
   player = new player();
   player.lives = 3;
   player.immunity = false;
   gun = new gun(player);
   board = new board();
-
+  song.play();
   devUI();
 }
 
@@ -133,14 +136,21 @@ if (player.immunity == true){
   immunity();
 }
 for (let i = 0; i < special.length; i ++){
-
-
   if (special[i].iterations > 20){
     special.splice(i,1);
   }else{
   special[i].drawPic();
   special[i].iterations += 1;
 }}
+
+for (let i = 0; i < teleArr.length; i ++){
+  if (teleArr[i].iterations > 10){
+    teleArr.splice(i,1);
+  }else{
+  teleArr[i].drawPic();
+  teleArr[i].iterations += 1;
+}
+}
 
 specBarUI();
 hearts();
@@ -217,13 +227,9 @@ class player{
     this.y += yMov;
   }
 
+
 }
 
 function mouseClicked() {
   projectile.push(new proj(player.x, player.y,mouseX,mouseY));
-
-  if(inShop == true){
-    console.log(mouseX);
-    console.log(mouseY);
-  }
 }

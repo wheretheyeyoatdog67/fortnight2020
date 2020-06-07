@@ -45,3 +45,20 @@ class specialProj{
   noStroke();
   }
 }
+
+class tele{
+  constructor(playerx,playery,mx,my){
+    this.x = playerx;
+    this.y = playery;
+    this.teleX = mx;
+    this.teleY = my;
+    this.iterations=0;
+  }
+  drawPic(){
+  noFill();
+  stroke(255);
+  ellipse(this.x,this.y, 20+this.iterations,20+this.iterations);
+  ellipse(this.teleX,this.teleY, 20+this.iterations,20+this.iterations);
+  noStroke();
+  }
+}
