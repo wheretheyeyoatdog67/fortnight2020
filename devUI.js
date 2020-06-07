@@ -49,7 +49,7 @@ function cellUI(){
 }
 function specBarUI(){
   stroke(255);
-  fill(255- 2.5*specBar,2.5*specBar,0);
+  fill(255- 2.5*specBar,0,255-2.5*specBar);
   rect(260,90,20,1.3*specBar);
   noStroke();
 }
