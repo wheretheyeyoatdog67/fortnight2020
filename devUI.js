@@ -49,7 +49,7 @@ function cellUI(){
 }
 function specBarUI(){
   stroke(255);
-  fill(255- 2.5*specBar,255-2.5*specBar,0);
+  fill(255- 2.5*specBar,0,255-2.5*specBar);
   rect(260,90,20,1.3*specBar);
   noStroke();
 }
@@ -71,7 +71,7 @@ function death(){
 
 }
 function restart(){
-  if (player.isDead ==true){
+  if (player.isDead == true){
   player.isDead = false;
   enemies = [];
   round = 1;
