@@ -9,7 +9,7 @@ function devUI(){
   button2 = createButton('SpawnEnemies');
   button2.position(260, 30);
   button2.mousePressed(spawnEnemies);
-  button4 = createButton('Ramp Mode');
+  button4 = createButton('START');
   button4.position(260, 70);
   button4.mousePressed(rampModeTog);
   button3 = createButton('Restart');
