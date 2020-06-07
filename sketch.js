@@ -1,9 +1,9 @@
 let img;
 let cellUIflop = false;
-let canvWid = 500;
-let canvHeight = 250;
-let width = 250;
-let height = 250;
+let canvWid = 800;
+let canvHeight = 400;
+let width = 500;
+let height = 400;
 let gameClock = 0;
 var enemies = [];
 let projectile = [];
@@ -22,6 +22,7 @@ let inShop = false;
 let teleArr = [];
 let lastTele = 10;
 let fcheck = 200;
+
 function preload() {
   img = loadImage('floor.png');
   slime = loadImage('slime.png');
@@ -31,6 +32,8 @@ function preload() {
   song = loadSound('h.mp3');
   songdmg = loadSound('dmg.mp3');
   songdeath = loadSound('death.mp3');
+  bgCob = loadImage("cobble.png");
+  teleports = loadImage("telport.png")
 
 }
 
@@ -51,46 +54,42 @@ function setup() {
 // STEP 2 classify!
 
 function draw() {
-image(doge, 250,0,250,250);
+clear();
+background(70,70,70);
 gameClock += 1;
-if (specBar >= 100){
-  specBar = 100;
-}
+image(doge, canvWid/1.2,0,150,canvHeight);
+
+
+
 
 //background(120,120,255);
 
 keyDown();
 grass();
-
+if (specBar >= 100){
+  specBar = 100;
+}
 if (cellUIflop == true){
   cellUI();
 }
 store();
 player.display();
-gun.disp(player)
+gun.disp(player);
+textUI();
+noStroke();
+
+
+
+
 if(!player.isDead){
-
   moveEnemies(enemies,player);
-
 }
 else death();
 
-textSize(12);
-text(mouseX-player.x, 260, 230);
-fill(0, 102, 153);
-text(mouseY-player.y, 260, 240);
-stroke(126);
-text("Round:", 290, 100);
-text(round-1,330, 100)
-stroke(126);
-fill(0);
-textSize(20);
-text("Score:", 5,245);
-stroke(255,0,0);
-text(score, 80,245);
+
 
 //line(player.x,player.y, mouseX,mouseY);
-noStroke();
+
 for(let i = 0;i<projectile.length;i++){
   projectile[i].move();
   projectile[i].remove();
@@ -108,9 +107,16 @@ for (let i = 0;i<enemies.length;i++){
   }
 }
 for (let i = 0;i<groundItems.length;i++){
+  if (groundItems[i][0] == 2) fill(120,0,255);
+  else fill(255,0,0);
+
   ellipse(groundItems[i][1],groundItems[i][2],20,20);
+
   if(dist(player.x,player.y,groundItems[i][1],groundItems[i][2])<20){
+    if (groundItems[i][0]==1)
     player.lives +=1;
+    if (groundItems[i][0]==2)
+    player.teleport += 1;
     groundItems.splice(i,1);
   }
 }
@@ -194,7 +200,7 @@ class gun{
 
     rotate(rotFact);
     stroke(255);
-    rect(gunX,gunY,gunW,gunH);
+    rect(gunX,gunY,gunW+2*slidergz.value(),gunH+2*slidergz.value());
     noStroke();
     pop();
   }
@@ -205,30 +211,7 @@ class gun{
 
 }
 
-class player{
-  constructor(){
-    this.x = 12.5;
-    this.y = 12.5;
-    this.lives;
-    this.diameter = 20;
-    this.isDead = false;
-    this.immunity = false;
 
-  }
-  display(){
-    fill(0,0,255);
-    stroke(255);
-    ellipseMode(CENTER);
-    ellipse(this.x, this.y, this.diameter ,this.diameter);
-    noStroke();
-  }
-  move(xMov,yMov){
-    this.x += xMov;
-    this.y += yMov;
-  }
-
-
-}
 
 function mouseClicked() {
   projectile.push(new proj(player.x, player.y,mouseX,mouseY));

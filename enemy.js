@@ -1,7 +1,12 @@
 class enemy{
   constructor(){
-    this.x = random(12.5,255-12.5);
-    this.y = random(150,255-12.5);
+    this.ran = random(-1,1);
+    if (this.ran >= 0){
+    this.x = random(0,750);
+    this.y = random(120,130);}
+    else {
+    this.x = random(0,750);
+    this.y = random(390,400);}
     this.vx = 0;
     this.vy = 0;
     this.diameter = 20;
@@ -77,22 +82,17 @@ class enemy{
     }
 
     wallCol(){
-      if(this.x < 1 || this.x > 249){
+      if (this.x < 25) this.x = 25;
+      if (this.x >725) this.x = 725;
+      if (this.y < 100)  this.y = 100;
+      if (this.y > 375) this.y =375;
 
-        this.vx*=-1;
-        if(this.x<1) this.x =2;
-        if (this.x>249) this.x= 248;
-      }
-      if(this.y <1 || this.y > 249){
-        this.vy *=-1;
-        if(this.y<1) this.y =2;
-        if (this.y>249) this.y = 248;
-      }
+
     }
     ballCol(enemyArr){
       for (let i = 0; i<enemyArr.length; i++) {
         if (i != this.enemyNum){
-          if (dist(this.x,this.y,enemyArr[i].x,enemyArr[i].y) < 10){
+          if (dist(this.x,this.y,enemyArr[i].x,enemyArr[i].y) < 10+slidergz.value()){
             this.vx*=random(-5,5);
             this.vy*=random(-5,5);
             //enemyArr[i].vx*=;
@@ -102,11 +102,12 @@ class enemy{
       }
     }
     bullCol(projetile){
+      let mul = slidergz.value();
       for(let i = 0;i<projetile.length;i++){
       let lX = projectile[i].projLoc[0]
       let qY = projectile[i].projLoc[1]
       if (dist(this.x,this.y,lX,qY) < 10){
-        this.health -= 35;
+        this.health -= 35 + mul*5;
         //this.isHit = true;
         specBar += 3;
 
@@ -114,9 +115,11 @@ class enemy{
     }
   }
   onKill(){
-    let l = random(0,1);
-    if(l>.90){
+    let l = floor(random(0,10));
+    if(l>=6&&l<=7){
       groundItems.push([1,this.x,this.y]);
+    }if(l>=9){
+        groundItems.push([2,this.x,this.y]);
     }
   }
   specCol(special){

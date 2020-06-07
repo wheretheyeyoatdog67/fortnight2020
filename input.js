@@ -19,15 +19,19 @@ function keyDown() {
       }
   }
   if (keyIsDown(69)) {
+    if(player.teleport > 0){
+    if(gameClock - lastTele > 100){
 
-    if(gameClock - lastTele > 10){
     px = player.x;
     py = player.y;
     player.x = mouseX;
     player.y = mouseY;
     teleArr.push(new tele(px,py,mouseX,mouseY));
     lastTele = gameClock;}
+    player.teleport -= 1;
   }
+
+}
 
 
 }

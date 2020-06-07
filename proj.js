@@ -13,21 +13,33 @@ class proj{
   }
   //for translate/rotate push pops.... use 0,0 origin once tranlate to player loc
   move(){
+    if (this.it == 0){
+      this.recoil();
+    }
     push();
     translate(this.x,this.y);
     rotate(this.rot);
     //dist(this.x+50,this.y,this.desX,this.desY)
     stroke(255,0,0);
-    rect(this.offset+this.it,0,15,4);
+    fill(0,0,200);
+    rect(this.offset+this.it,0,15+slidergz.value(),4+slidergz.value());
 
     pop();
     this.projLoc[0] = this.x +( this.offset + this.it)*cos(this.rot);
     this.projLoc[1] = this.y + (this.offset + this.it)*sin(this.rot);
-    if (this.projLoc[0] < 0 || this.projLoc[0] > 250 || this.projLoc[1] < 0 || this.projLoc[1] > 250) this.removeit = true;
+    if (this.projLoc[0] < 0 || this.projLoc[0] > 750 || this.projLoc[1] < 0 || this.projLoc[1] > 400) this.removeit = true;
 }
 
   remove(){
-    this.it += 10;
+    this.it += 10+2*sliderbz.value();
+  }
+  recoil(){
+    {
+      let mul = slidergz.value();
+
+      player.x += mul*2*-cos(this.rot);
+      player.y += mul*2*-sin(this.rot);
+    }
   }
 
 }

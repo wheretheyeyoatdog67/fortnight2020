@@ -1,19 +1,27 @@
 function devUI(){
 
   button = createButton('CellUI');
-  button.position(260, 10);
+  button.position(140, 380);
   button.mousePressed(cellUIflopper);
   slider = createSlider(0, 100, 0);
-  slider.position(260, 50);
+  slider.position(460, 382);
   slider.style('width', '80px');
+  slidergz = createSlider(0, 5, 0);
+  slidergz.position(300, 382);
+  slidergz.style('width', '80px');
+
+  sliderbz = createSlider(0, 5, 0);
+  sliderbz.position(380, 382);
+  sliderbz.style('width', '80px');
+
   button2 = createButton('SpawnEnemies');
-  button2.position(260, 30);
+  button2.position(190, 380);
   button2.mousePressed(spawnEnemies);
   button4 = createButton('START');
-  button4.position(260, 70);
+  button4.position(30, 380);
   button4.mousePressed(rampModeTog);
   button3 = createButton('Restart');
-  button3.position(312, 10);
+  button3.position(85, 380);
   button3.mousePressed(restart);
   // buttonb = createButton('BUY');
   // buttonb.position(33, 85);
@@ -48,28 +56,31 @@ function cellUI(){
   noStroke();
 }
 function specBarUI(){
-  stroke(255);
-  fill(255- 2.5*specBar,0,255- 2.5*specBar);
-  rect(260,90,20,1.3*specBar);
+  strokeWeight(3);
+  stroke(120,0,255);
+  fill(107,107,107);
+  rect(717 ,25,20,250);
+  fill(255,0,255- 1*specBar);
+  rect(717 ,25,20,2.5*specBar);
+  strokeWeight(1);
   noStroke();
 }
 function death(){
 
   textSize(40);
   stroke(255);
-
   noStroke();
   let c = color(100, 100, 100, 102);
   fill(c);
-  rect(0,0,250,250);
+  rect(0,0,750,400);
   fill(255,0,0);
   stroke(0,0,0);
-  text("YOU DIED", 25, 50);
+  text("YOU DIED", 275, 200);
   song.pause();
   noFill();
   noStroke();
-
 }
+
 function restart(){
   if (player.isDead == true){
   player.isDead = false;
@@ -78,21 +89,28 @@ function restart(){
   specBar = 100;
   player.lives = 3;
   song.play();
-  score = 0;}
+  score = 0;
+  player.teleport = 3;
 }
-function hearts(){
 
+}
+
+function hearts(){
   imageMode(CENTER);
   for (let i = 0; i < player.lives;i++){
-  image(heart, 240-i*20, 10, 20,20);
-  }imageMode(CORNER);
+  image(heart, 725-i*20, 15, 20,20);
+  }
+  for (let i = 0; i < player.teleport;i++){
+    image(teleports, 700-i*20, 35, 15,15);
+  }
+  imageMode(CORNER);
 }
 
 function store(){
-  image(market,320,130,70,70);
+  image(market,620,100,70,70);
 
   if(dist(player.x,player.y,365,175)< 120){
-    displayShopContents();
+    //displayShopContents();
     inShop = true;
 
   }
@@ -113,7 +131,29 @@ function displayShopContents(){
   stroke(255,255,0);
   text("Big Gun: 2000 Points", 25,70);
 }
+
 function biggunbuy(){
   gunW += 10;
   gunH += 10;
+}
+
+function textUI(){
+
+  // textSize(12);
+  // text(mouseX-player.x, 260, 230);
+  fill(0);
+  // text(mouseY-player.y, 260, 240);
+  strokeWeight(3);
+  stroke(126);
+  textSize(30);
+  stroke(255,0,0);
+  text("Round:", 40, 55);
+  text(round-1,150, 55)
+  stroke(126);
+  fill(0);
+  textSize(20);
+  text("Score:", 40,80);
+  stroke(255,0,0);
+  text(score, 120,80);
+  strokeWeight(1);
 }
