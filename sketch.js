@@ -22,7 +22,7 @@ let inShop = false;
 let teleArr = [];
 let lastTele = 10;
 let fcheck = 200;
-
+let bossSpawn = false;
 function preload() {
   img = loadImage('floor.png');
   slime = loadImage('slime.png');
@@ -57,7 +57,7 @@ function draw() {
 clear();
 background(70,70,70);
 gameClock += 1;
-image(doge, canvWid/1.2,0,150,canvHeight);
+image(doge, 700,0,150,canvHeight);
 
 
 
@@ -150,7 +150,7 @@ for (let i = 0; i < special.length; i ++){
 }}
 
 for (let i = 0; i < teleArr.length; i ++){
-  if (teleArr[i].iterations > 10){
+  if (teleArr[i].iterations > 20){
     teleArr.splice(i,1);
   }else{
   teleArr[i].drawPic();
@@ -160,8 +160,17 @@ for (let i = 0; i < teleArr.length; i ++){
 
 specBarUI();
 hearts();
-
+if(controlAct == true){
+  fill(107,107,107);
+  stroke(120,0,10)
+  rect(200,100,300,200);
+  text("-Start by pressing start \n-Wasd to move \n-Click to Shoot\n-Space to use spec Bar\n-E to teleport\n-Once dead click restart\n-CLICK CONTROLS TO LEAVE\n   MENU",210,120);
+}
 if (ramp== true) rampMode();
+
+
+
+
 }
 function immunity(){
   timeIt()

@@ -1,3 +1,4 @@
+let controlAct = false;
 function devUI(){
 
   button = createButton('CellUI');
@@ -23,10 +24,21 @@ function devUI(){
   button3 = createButton('Restart');
   button3.position(85, 380);
   button3.mousePressed(restart);
+  buttonhelp = createButton('Controls');
+  buttonhelp.position(650, 380);
+  buttonhelp.mousePressed(controls);
+
+
+
   // buttonb = createButton('BUY');
   // buttonb.position(33, 85);
 
 
+}
+function controls(){
+  if (controlAct == false){
+    controlAct = true;
+  }else controlAct = false;
 }
 function rampModeTog(){
   if (ramp == true)ramp = false;
@@ -101,6 +113,10 @@ function hearts(){
   image(heart, 725-i*20, 15, 20,20);
   }
   for (let i = 0; i < player.teleport;i++){
+    fill(255);
+    strokeWeight(2);
+    stroke(255,0,0);
+    rect(692-i*20, 28, 15,15)
     image(teleports, 700-i*20, 35, 15,15);
   }
   imageMode(CORNER);

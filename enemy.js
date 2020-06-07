@@ -18,16 +18,25 @@ class enemy{
     this.mult = -1;
     this.randMut = random(1,1.2);
     this.health = 100;
+    this.isBoss = false;
+
 
 
   }
   display(){
     imageMode(CENTER);
     image(slime, this.x, this.y, this.diameter*this.randMut,this.diameter*this.randMut);
+    if (this.isBoss == false){
     fill(255,0,0)
     rect(this.x-10,this.y+10,20,5);
     fill(0,255,0);
-    rect(this.x-10,this.y+10,20*this.health/100,5);
+    rect(this.x-10,this.y+10,20*this.health/100,5);}
+    else {
+      fill(255,0,0)
+      rect(this.x-100,this.y+this.diameter/2,200,5);
+      fill(0,255,0);
+      rect(this.x-100,this.y+this.diameter/2,this.health/10,5);
+    }
     imageMode(CORNER);
 
   }
@@ -46,17 +55,17 @@ class enemy{
       }
     }
 
-    if (this.vx >= 2){
-      this.vx = 2;
+    if (this.vx >= 4){
+      this.vx = 4;
     }
-    if (this.vx <= -2){
-      this.vx = -2;
+    if (this.vx <= -4){
+      this.vx = -4;
     }
-    if (this.vy >= 2){
-      this.vy = 2;
+    if (this.vy >= 4){
+      this.vy = 4;
     }
-    if (this.vy <= -2){
-      this.vy = -2;
+    if (this.vy <= -4){
+      this.vy = -4;
     }
     }
 
@@ -106,8 +115,13 @@ class enemy{
       for(let i = 0;i<projetile.length;i++){
       let lX = projectile[i].projLoc[0]
       let qY = projectile[i].projLoc[1]
-      if (dist(this.x,this.y,lX,qY) < 10){
+
+      if (dist(this.x,this.y,lX,qY) < this.diameter - 10){
+        console.log(cos(projectile.rot));
+        this.x = this.x + slidergz.value()*5*cos(projectile[i].rot);
+        this.y = this.y + slidergz.value()*5*sin(projectile[i].rot);
         this.health -= 35 + mul*5;
+        projetile[i].removeit = true;
         //this.isHit = true;
         specBar += 3;
 
@@ -142,22 +156,30 @@ function moveEnemies(enemyArr,player){
   }
 }
 
-
-
-
-
 function spawnEnemies(){
   let val = slider.value();
   if (val == 0){
     val = round;
   }
+
   if (enemies.length == 0) {
     round += 1;
+
   }
+  if (round%6 == 0){
+      enemyMob = new enemy();
+      enemyMob.enemyNum = 0;
+      enemyMob.diameter = 200;
+      enemyMob.health = 2000;
+      enemyMob.isBoss = true;
+      enemies.push(enemyMob);
+    }
+
+  else {
   for (var i = 0; i < val; i ++){
     enemyMob = new enemy();
     enemyMob.enemyNum = i;
+    enemyMob.diameter=20;
     enemies.push(enemyMob);
-
-  }
+  }}
 }

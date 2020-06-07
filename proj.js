@@ -22,7 +22,7 @@ class proj{
     //dist(this.x+50,this.y,this.desX,this.desY)
     stroke(255,0,0);
     fill(0,0,200);
-    rect(this.offset+this.it,0,15+slidergz.value(),4+slidergz.value());
+    ellipse(this.offset+this.it,0,15+slidergz.value(),4+slidergz.value());
 
     pop();
     this.projLoc[0] = this.x +( this.offset + this.it)*cos(this.rot);
@@ -68,9 +68,14 @@ class tele{
   }
   drawPic(){
   noFill();
-  stroke(255);
+  stroke(255,0,this.iterations*2.5);
+  ellipse(this.x,this.y, 30+this.iterations,30+this.iterations);
   ellipse(this.x,this.y, 20+this.iterations,20+this.iterations);
-  ellipse(this.teleX,this.teleY, 20+this.iterations,20+this.iterations);
+  ellipse(this.x,this.y, 10+this.iterations,10+this.iterations);
+
+  ellipse(this.teleX,this.teleY, 40+this.iterations,40+this.iterations);
+  strokeWeight(3);
+  line(this.x,this.y,this.teleX,this.teleY);
   noStroke();
   }
 }

@@ -1,14 +1,14 @@
 function keyDown() {
   if (keyIsDown(65)) {
-    player.move(-3,0);
+    player.move(-5,0);
   } if (keyIsDown(68)) {
-    player.move(3,0);
+    player.move(5,0);
   }
   if (keyIsDown(83)) {
-    player.move(0,3);
+    player.move(0,5);
   }
   if (keyIsDown(87)) {
-    player.move(0,-3);
+    player.move(0,-5);
   }
   if (keyIsDown(32)) {
       if (specBar > 0){
@@ -27,8 +27,10 @@ function keyDown() {
     player.x = mouseX;
     player.y = mouseY;
     teleArr.push(new tele(px,py,mouseX,mouseY));
-    lastTele = gameClock;}
-    player.teleport -= 1;
+    lastTele = gameClock;
+  player.teleport -= 1;
+}
+
   }
 
 }
