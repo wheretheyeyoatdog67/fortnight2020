@@ -37,15 +37,14 @@ function preload() {
 
 
 function setup() {
-
   createCanvas(canvWid, canvHeight);
   player = new player();
   player.lives = 3;
   player.immunity = false;
   gun = new gun(player);
   board = new board();
-  song.play();
   devUI();
+  song.play();
 }
 
 // STEP 2 classify!
