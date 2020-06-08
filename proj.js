@@ -20,8 +20,10 @@ class proj{
     translate(this.x,this.y);
     rotate(this.rot);
     //dist(this.x+50,this.y,this.desX,this.desY)
-    stroke(255,0,0);
+    strokeWeight(2);
+    stroke(90,80,80);
     fill(0,0,200);
+    //image(teleports,this.offset+this.it,0,25+slidergz.value(),15+slidergz.value())
     ellipse(this.offset+this.it,0,15+slidergz.value(),4+slidergz.value());
 
     pop();

@@ -13,7 +13,13 @@ class player{
     fill(0,0,255);
     stroke(255);
     ellipseMode(CENTER);
+    push();
+    translate(this.x,this.y);
+    rotate(3.14);
+    image(teleports,-30,-20, this.diameter*3 ,this.diameter)
+    pop();
     ellipse(this.x, this.y, this.diameter ,this.diameter);
+
     noStroke();
 
 

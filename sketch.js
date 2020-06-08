@@ -78,9 +78,6 @@ gameClock += 1;
 keyDown();
 
 decor();
-image(teleports,20,20,200,200);
-
-
 checkSwap();
 store();
 textUI();
