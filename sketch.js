@@ -23,6 +23,7 @@ let teleArr = [];
 let lastTele = 10;
 let fcheck = 200;
 let bossSpawn = false;
+let bossCount = 1;
 function preload() {
   img = loadImage('floor.png');
   slime = loadImage('slime.png');
@@ -107,22 +108,31 @@ for (let i = 0;i<enemies.length;i++){
   }
 }
 for (let i = 0;i<groundItems.length;i++){
-  if (groundItems[i][0] == 2) fill(120,0,255);
-  else fill(255,0,0);
-
+  if (groundItems[i][0] == 1) fill(255,0,0);
+  else if (groundItems[i][0] == 2){
+  fill(120,0,255);}
+  else if (groundItems[i][0] == 3){
+  fill(0,0,255);}
   ellipse(groundItems[i][1],groundItems[i][2],20,20);
 
+
   if(dist(player.x,player.y,groundItems[i][1],groundItems[i][2])<20){
-    if (groundItems[i][0]==1)
+    if (groundItems[i][0]==1){
     player.lives +=1;
-    if (groundItems[i][0]==2)
+    groundItems.splice(i,1)}
+    else if (groundItems[i][0]==2){
     player.teleport += 1;
-    groundItems.splice(i,1);
+    groundItems.splice(i,1);}
+    else if (groundItems[i][0]==3){
+    specBar += 25;
+    groundItems.splice(i,1);}
+
   }
 }
 for (let i = 0;i<enemies.length;i++){
   enemies[i].enemyNum = i;
-  if(dist(player.x,player.y,enemies[i].x,enemies[i].y)< 10 && player.immunity == false){
+
+  if(dist(player.x,player.y,enemies[i].x,enemies[i].y)< enemies[i].diameter/1.7 && player.immunity == false){
     player.lives-=1;
     player.immunity = true;
 //console.log(player.immunity);

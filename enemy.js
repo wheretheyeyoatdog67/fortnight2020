@@ -9,7 +9,7 @@ class enemy{
     this.y = random(390,400);}
     this.vx = 0;
     this.vy = 0;
-    this.diameter = 20;
+    this.diameter = 10;
     this.followParam = 0;
     this.enemyNum;
     this.isHit = false;
@@ -129,11 +129,14 @@ class enemy{
     }
   }
   onKill(){
-    let l = floor(random(0,10));
-    if(l>=6&&l<=7){
+    let l = (random(0,10));
+    if(l>=6 && l< 7){
       groundItems.push([1,this.x,this.y]);
-    }if(l>=9){
+    }else if(l>=9 && l< 10){
         groundItems.push([2,this.x,this.y]);
+    }
+    else if(l>=5 && l<6){
+        groundItems.push([3,this.x,this.y]);
     }
   }
   specCol(special){
@@ -166,13 +169,16 @@ function spawnEnemies(){
     round += 1;
 
   }
-  if (round%6 == 0){
+  if (round%5 == 0){
+      for (let i = 0;i<bossCount;i++){
       enemyMob = new enemy();
       enemyMob.enemyNum = 0;
-      enemyMob.diameter = 200;
+      enemyMob.diameter = 100;
       enemyMob.health = 2000;
       enemyMob.isBoss = true;
       enemies.push(enemyMob);
+    }
+    bossCount += 1;
     }
 
   else {

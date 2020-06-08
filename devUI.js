@@ -103,6 +103,7 @@ function restart(){
   song.play();
   score = 0;
   player.teleport = 3;
+  bossCount = 1;
 }
 
 }
