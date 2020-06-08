@@ -34,7 +34,9 @@ function preload() {
   songdmg = loadSound('dmg.mp3');
   songdeath = loadSound('death.mp3');
   bgCob = loadImage("cobble.png");
-  teleports = loadImage("telport.png")
+  teleports = loadImage("telport.png");
+  energy = loadImage("energy.png")
+
 
 }
 
@@ -108,12 +110,14 @@ for (let i = 0;i<enemies.length;i++){
   }
 }
 for (let i = 0;i<groundItems.length;i++){
-  if (groundItems[i][0] == 1) fill(255,0,0);
+  if (groundItems[i][0] == 1){
+
+  image(heart,groundItems[i][1]-15,groundItems[i][2]-15,30,30);}
   else if (groundItems[i][0] == 2){
-  fill(120,0,255);}
+  image(teleports,groundItems[i][1]-15,groundItems[i][2]-15,30,30);}
   else if (groundItems[i][0] == 3){
-  fill(0,0,255);}
-  ellipse(groundItems[i][1],groundItems[i][2],20,20);
+  image(energy,groundItems[i][1]-45,groundItems[i][2]-30,60,45);}
+
 
 
   if(dist(player.x,player.y,groundItems[i][1],groundItems[i][2])<20){
@@ -174,6 +178,7 @@ if(controlAct == true){
   fill(107,107,107);
   stroke(120,0,10)
   rect(200,100,300,200);
+  textSize(20);
   text("-Start by pressing start \n-Wasd to move \n-Click to Shoot\n-Space to use spec Bar\n-E to teleport\n-Once dead click restart\n-CLICK CONTROLS TO LEAVE\n   MENU",210,120);
 }
 if (ramp== true) rampMode();
