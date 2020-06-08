@@ -16,6 +16,7 @@ class player{
     push();
     translate(this.x,this.y);
     rotate(3.14);
+    image(fire,-50,-60, 100,70)
     image(teleports,-30,-20, this.diameter*3 ,this.diameter)
     pop();
     ellipse(this.x, this.y, this.diameter ,this.diameter);

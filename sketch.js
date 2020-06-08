@@ -50,6 +50,7 @@ function preload() {
   bgCob = loadImage("cobble.png");
   teleports = loadImage("telport.png");
   energy = loadImage("energy.png")
+  fire = loadImage("fire.png")
 
 
 }
