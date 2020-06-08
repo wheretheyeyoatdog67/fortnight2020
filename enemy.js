@@ -166,7 +166,7 @@ function spawnEnemies(){
     val = round;
   }
 
-  if (enemies.length == 0) {
+  if (enemies.length == 0 && player.isDead == false) {
     round += 1;
 
   }

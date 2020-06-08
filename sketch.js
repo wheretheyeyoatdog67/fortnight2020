@@ -24,20 +24,9 @@ let lastTele = 10;
 let fcheck = 200;
 let bossSpawn = false;
 let bossCount = 1;
-let spritesheet;
-let sprite;
+let hitArr = [];
+
 function preload() {
-
-  // get portion of spritesheet image
-
-
-
-  // show single sprite
-
-
-
-
-  spritesheet = loadImage('telport.png');
 
   img = loadImage('floor.png');
   slime = loadImage('slime.png');
@@ -48,6 +37,7 @@ function preload() {
   songdmg = loadSound('dmg.mp3');
   songdeath = loadSound('death.mp3');
   bgCob = loadImage("cobble.png");
+  bgCobOpenDoor = loadImage("doorOpen/cobble4.png");
   teleports = loadImage("telport.png");
   energy = loadImage("energy.png")
   fire = loadImage("fire.png")
@@ -67,8 +57,6 @@ function setup() {
   board = new board();
   devUI();
   song.play();
-  sprite = spritesheet.get(0, 0, 40, 40);
-  image(doge, 700,0,150,canvHeight);
 }
 
 // STEP 2 classify!
@@ -94,6 +82,7 @@ specBarUI();
 hearts();
 enemyIsHit()
 runGameMode();
+
 
 }
 
@@ -140,16 +129,26 @@ function playerCol(){
 
     if(dist(player.x,player.y,enemies[i].x,enemies[i].y)< enemies[i].diameter/1.7 && player.immunity == false){
       player.lives-=1;
+      hitArr.push(gameClock);
       player.immunity = true;
+
+
   //console.log(player.immunity);
       if (player.lives == 0)
       {player.isDead = true;
       song.pause();
       songdeath.play();
-
       }
 
+
   }
+
+  }
+  if (hitArr.length > 0){
+    if(gameClock-hitArr[0] < 10){
+      fill(255,0,0,100);
+      rect(0,0,750,400);
+    }else hitArr.splice(0,1);
 
 
   }

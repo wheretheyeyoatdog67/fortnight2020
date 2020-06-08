@@ -5,5 +5,10 @@ class board{
 }
 
 function decor(){
-  image(bgCob, 0,0, 750, 400);
+  if (round-1 < 10){
+    image(bgCob, 0,0, 750, 400);
+  }
+  else image(bgCobOpenDoor, 0,0, 750, 400);
+
+
 }

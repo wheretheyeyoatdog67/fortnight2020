@@ -88,6 +88,7 @@ function death(){
   fill(255,0,0);
   stroke(0,0,0);
   text("YOU DIED", 275, 200);
+  enemies = [];
   song.pause();
   noFill();
   noStroke();
@@ -104,6 +105,7 @@ function restart(){
   score = 0;
   player.teleport = 3;
   bossCount = 1;
+  hitArr = [];
 }
 
 }
