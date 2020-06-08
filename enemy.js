@@ -77,7 +77,7 @@ class enemy{
         // this.specialHit = false;
         // this.x += this.vx;
         // this.y += this.vy;
-        this.health -= 50;
+        this.health -= 10;
         //this.isHit = true;
 
       }
