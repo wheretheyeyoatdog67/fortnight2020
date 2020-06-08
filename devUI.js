@@ -173,4 +173,13 @@ function textUI(){
   stroke(255,0,0);
   text(score, 120,80);
   strokeWeight(1);
+
+
+  if(controlAct == true){
+    fill(107,107,107);
+    stroke(120,0,10)
+    rect(200,100,300,200);
+    textSize(20);
+    text("-Start by pressing start \n-Wasd to move \n-Click to Shoot\n-Space to use spec Bar\n-E to teleport\n-Once dead click restart\n-CLICK CONTROLS TO LEAVE\n   MENU",210,120);
+  }
 }

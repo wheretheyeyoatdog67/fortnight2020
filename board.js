@@ -4,12 +4,6 @@ class board{
   }
 }
 
-function grass(){
+function decor(){
   image(bgCob, 0,0, 750, 400);
- //  for (let i = 0; i < 5; i++) {
- //    for (let j = 0; j < 5; j++) {
- //      image(img, i*50, j*50, 50, 50);
- //    }
- // }
-
 }

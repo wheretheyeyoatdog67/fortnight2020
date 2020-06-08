@@ -15,6 +15,9 @@ class player{
     ellipseMode(CENTER);
     ellipse(this.x, this.y, this.diameter ,this.diameter);
     noStroke();
+
+
+
   }
   move(xMov,yMov){
     this.wallCol();
@@ -29,4 +32,25 @@ class player{
   }
 
 
+}
+
+class gun{
+  constructor(player){
+  this.x = player.x;
+  this.y = player.y;}
+  move(player){
+    this.x = player.x;
+    this.y = player.y;}
+  disp(player){
+    push();
+    this.move(player);
+    rectMode(CENTER);
+    angleMode(RADIANS);
+    let rotFact  = atan2((mouseY-player.y)/2,(mouseX-player.x)/2);
+    translate (player.x,player.y);
+    rotate(rotFact);
+    stroke(255);
+    rect(gunX,gunY,gunW+2*slidergz.value(),gunH+2*slidergz.value());
+    noStroke();
+    pop();}
 }

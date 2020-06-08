@@ -74,6 +74,9 @@ class tele{
   ellipse(this.x,this.y, 10+this.iterations,10+this.iterations);
 
   ellipse(this.teleX,this.teleY, 40+this.iterations,40+this.iterations);
+  ellipse(this.teleX,this.teleY, 30+this.iterations,30+this.iterations);
+  ellipse(this.teleX,this.teleY, 20+this.iterations,20+this.iterations);
+  ellipse(this.teleX,this.teleY, 10+this.iterations,10+this.iterations);
   strokeWeight(3);
   line(this.x,this.y,this.teleX,this.teleY);
   noStroke();
