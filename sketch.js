@@ -116,7 +116,7 @@ for (let i = 0;i<groundItems.length;i++){
   else if (groundItems[i][0] == 2){
   image(teleports,groundItems[i][1]-15,groundItems[i][2]-15,30,30);}
   else if (groundItems[i][0] == 3){
-  image(energy,groundItems[i][1]-45,groundItems[i][2]-30,60,45);}
+  image(energy,groundItems[i][1]-65,groundItems[i][2]-30,80,45);}
 
 
 

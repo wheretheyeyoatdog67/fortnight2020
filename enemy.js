@@ -19,6 +19,7 @@ class enemy{
     this.randMut = random(1,1.2);
     this.health = 100;
     this.isBoss = false;
+    this.offset = 0;
 
 
 
@@ -116,7 +117,7 @@ class enemy{
       let lX = projectile[i].projLoc[0]
       let qY = projectile[i].projLoc[1]
 
-      if (dist(this.x,this.y,lX,qY) < this.diameter - 10){
+      if (dist(this.x,this.y,lX,qY) < this.diameter-10*this.offset){
         console.log(cos(projectile.rot));
         this.x = this.x + slidergz.value()*5*cos(projectile[i].rot);
         this.y = this.y + slidergz.value()*5*sin(projectile[i].rot);
@@ -169,13 +170,15 @@ function spawnEnemies(){
     round += 1;
 
   }
-  if (round%5 == 0){
+  let m = round - 1;
+  if (m%5 == 0){
       for (let i = 0;i<bossCount;i++){
       enemyMob = new enemy();
       enemyMob.enemyNum = 0;
       enemyMob.diameter = 100;
       enemyMob.health = 2000;
       enemyMob.isBoss = true;
+      enemyMob.offset = 1;
       enemies.push(enemyMob);
     }
     bossCount += 1;
