@@ -2,11 +2,11 @@ class enemy{
   constructor(){
     this.ran = random(-1,1);
     if (this.ran >= 0){
-    this.x = random(0,750);
+    this.x = random(50,700);
     this.y = random(120,130);}
     else {
-    this.x = random(0,750);
-    this.y = random(390,400);}
+    this.x = random(50,700);
+    this.y = random(300,360);}
     this.vx = 0;
     this.vy = 0;
     this.diameter = 10;
@@ -20,7 +20,11 @@ class enemy{
     this.health = 100;
     this.isBoss = false;
     this.offset = 0;
-
+    this.canShoot = false;
+    this.projLoc = [];
+    this.it = 0;
+    this.rot;
+    this.lastShot = 0;
 
 
   }
@@ -93,8 +97,9 @@ class enemy{
         this.isHit = true;
         score += 50;
       }
+      if(this.canShoot == false) {
       this.x += this.vx;
-      this.y += this.vy;
+      this.y += this.vy;}
 
     }
 
@@ -154,11 +159,29 @@ class enemy{
       }
     }
   }
+}
+function removeNMoveEnemyShot(){
+  for (let i = 0; i < enemyProjArr.length;i++){
+    //console.log('Help');
+    enemyProjArr[i].move();
+    enemyProjArr[i].it += 10;
+    if (enemyProjArr[i].removeit == true){
 
+      enemyProjArr.splice(i,1);
+    }
+
+
+  }
 }
 
 function moveEnemies(enemyArr,player){
+  removeNMoveEnemyShot();
   for (let i = 0; i<enemyArr.length; i++) {
+    if (gameClock-enemyArr[i].lastShot > 20 && enemyArr[i].canShoot == true){
+      enemyArr[i].lastShot = gameClock;
+      enemyProjArr.push(new proj(enemyArr[i].x, enemyArr[i].y,player.x,player.y,true));
+
+    }
     enemyArr[i].move();
     enemyArr[i].wallCol();
     enemyArr[i].ballCol(enemyArr);
@@ -167,6 +190,7 @@ function moveEnemies(enemyArr,player){
     enemyArr[i].follow(player.x,player.y,enemyArr);
 
   }
+
 }
 
 function spawnEnemies(){
@@ -197,10 +221,13 @@ function spawnEnemies(){
     }
 
   else {
+
   for (var i = 0; i < val; i ++){
     enemyMob = new enemy();
     enemyMob.enemyNum = i;
     enemyMob.diameter=20;
+    let q = random(-1,1);
+    if (q>=.5){enemyMob.canShoot = true;}
     enemies.push(enemyMob);
   }}
 }

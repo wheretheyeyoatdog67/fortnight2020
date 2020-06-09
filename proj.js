@@ -1,9 +1,10 @@
 class proj{
-  constructor(playerx,playery,mouseX,mouseY){
+  constructor(playerx,playery,mouseX,mouseY,isEnemy){
     this.x = playerx;
     this.y = playery;
     this.desX = mouseX;
     this.desY = mouseY;
+
     this.rot = atan2((this.desY-this.y)/2,(this.desX-this.x)/2);
     this.it= 0;
     this.rect;
@@ -12,6 +13,8 @@ class proj{
     this.projLoc = [200,200];
     this.spriteSection = 0;
     this.shootTime = gameClock;
+    this.isEnemy = isEnemy;
+
   }
   //for translate/rotate push pops.... use 0,0 origin once tranlate to player loc
   move(){
@@ -23,15 +26,16 @@ class proj{
     rotate(this.rot);
     //dist(this.x+50,this.y,this.desX,this.desY)
     strokeWeight(2);
+
     stroke(90,80,80);
     fill(0,0,200);
     let deltaT = gameClock - this.shootTime;
     if (deltaT < 5){
-      image(proj1,this.offset+this.it,-8,25+slidergz.value(),15+slidergz.value());
-    }else if (deltaT >= 5 && deltaT < 10){
-      image(proj2,this.offset+this.it,0,25+slidergz.value(),15+slidergz.value());
+      image(proj1,this.offset+this.it,-15,35+slidergz.value(),35+slidergz.value());
+    }else if (deltaT >= 5 && deltaT < 15){
+      image(proj2,this.offset+this.it,-15,35+slidergz.value(),35+slidergz.value());
     }else {
-    image(proj3,this.offset+this.it,0,25+slidergz.value(),15+slidergz.value());}
+    image(proj3,this.offset+this.it,-15,35+slidergz.value(),35+slidergz.value());}
     //ellipse(this.offset+this.it,0,15+slidergz.value(),4+slidergz.value());
 
     pop();

@@ -28,7 +28,9 @@ let hitArr = [];
 let newRound = true;
 let newRoundClockOffset = 0;
 let movePos = true;
-
+let curRoom = 0;
+let doorEntry = false;
+let enemyProjArr = [];
 function preload() {
 
   img = loadImage('floor.png');
@@ -41,6 +43,7 @@ function preload() {
   songdeath = loadSound('death.mp3');
   bgCob = loadImage("cobble.png");
   bgCobOpenDoor = loadImage("doorOpen/cobble4.png");
+  winXp = loadImage("backgrounds/winXP.jpeg");
   teleports = loadImage("telport.png");
   energy = loadImage("energy.png");
   fire = loadImage("fire.png");
@@ -87,9 +90,11 @@ playerCol();
 PlayerStats()
 teleBuffer();
 specBarUI();
+
 hearts();
-enemyIsHit()
+doorEntrySign();
 runGameMode();
+
 
 
 }
@@ -97,15 +102,14 @@ runGameMode();
 
 
 
-function enemyIsHit(){
-  for (let i = 0;i<enemies.length;i++){
+function enemyIsHit(i){
     enemies[i].bullCol(projectile)
     enemies[i].specCol(special);
     if (enemies[i].isHit == true){
       enemies[i].onKill();
       enemies.splice(i,1);
     }
-  }
+
 }
 function moveSpecialProjectiles(){
   for (let i = 0; i < special.length; i ++){
@@ -133,14 +137,13 @@ function PlayerStats(){
 
 function playerCol(){
   for (let i = 0;i<enemies.length;i++){
+
     enemies[i].enemyNum = i;
 
     if(dist(player.x,player.y,enemies[i].x,enemies[i].y)< enemies[i].diameter/1.7 && player.immunity == false){
       player.lives-=1;
       hitArr.push(gameClock);
       player.immunity = true;
-
-
   //console.log(player.immunity);
       if (player.lives == 0)
       {player.isDead = true;
@@ -150,7 +153,7 @@ function playerCol(){
 
 
   }
-
+  enemyIsHit(i);
   }
   if (hitArr.length > 0){
     if(gameClock-hitArr[0] < 10){

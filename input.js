@@ -18,6 +18,12 @@ function keyDown() {
 
       }
   }
+  if (keyIsDown(81)) {
+    if(round-1 >= 10 && doorEntry == true){
+      curRoom = 1;}
+
+
+  }
   if (keyIsDown(69)) {
     if(player.teleport > 0){
     if(gameClock - lastTele > 100){
@@ -38,6 +44,6 @@ function keyDown() {
 
 }
 function mouseClicked(event) {
-  projectile.push(new proj(player.x, player.y,mouseX,mouseY));
+  projectile.push(new proj(player.x, player.y,mouseX,mouseY,false));
 
 }

@@ -47,7 +47,8 @@ function rampModeTog(){
 }
 function rampMode(){
   if (enemies.length == 0){
-    spawnEnemies();
+    if (round <= 10){
+    spawnEnemies();}
   }
 }
 
@@ -78,7 +79,7 @@ function specBarUI(){
   noStroke();
 }
 function death(){
-
+  enemyProjArr = [];
   textSize(40);
   stroke(255);
   noStroke();
@@ -184,4 +185,16 @@ function textUI(){
     textSize(20);
     text("-Start by pressing start \n-Wasd to move \n-Click to Shoot\n-Space to use spec Bar\n-E to teleport\n-Once dead click restart\n-CLICK CONTROLS TO LEAVE\n   MENU",210,120);
   }
+
+}
+
+function doorEntrySign(){
+  if(dist(player.x,player.y,260,50)< 60){
+    stroke(120,70,70);
+    fill(0,70,0);
+    rect(224,40,30,30);
+    fill(255);
+    text("Q",230,60)
+    doorEntry = true;
+  }else doorEntry = false;
 }
