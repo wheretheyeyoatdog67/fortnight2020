@@ -42,8 +42,12 @@ function preload() {
   bgCob = loadImage("cobble.png");
   bgCobOpenDoor = loadImage("doorOpen/cobble4.png");
   teleports = loadImage("telport.png");
-  energy = loadImage("energy.png")
-  fire = loadImage("fire.png")
+  energy = loadImage("energy.png");
+  fire = loadImage("fire.png");
+  proj1=  loadImage("projectile/proj1.png");
+  proj2 =  loadImage("projectile/proj2.png");
+
+  proj3 =  loadImage("projectile/proj3.png");
 
 
 }

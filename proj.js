@@ -10,6 +10,8 @@ class proj{
     this.removeit = false;
     this.offset = 25
     this.projLoc = [200,200];
+    this.spriteSection = 0;
+    this.shootTime = gameClock;
   }
   //for translate/rotate push pops.... use 0,0 origin once tranlate to player loc
   move(){
@@ -23,8 +25,14 @@ class proj{
     strokeWeight(2);
     stroke(90,80,80);
     fill(0,0,200);
-    //image(teleports,this.offset+this.it,0,25+slidergz.value(),15+slidergz.value())
-    ellipse(this.offset+this.it,0,15+slidergz.value(),4+slidergz.value());
+    let deltaT = gameClock - this.shootTime;
+    if (deltaT < 5){
+      image(proj1,this.offset+this.it,-8,25+slidergz.value(),15+slidergz.value());
+    }else if (deltaT >= 5 && deltaT < 10){
+      image(proj2,this.offset+this.it,0,25+slidergz.value(),15+slidergz.value());
+    }else {
+    image(proj3,this.offset+this.it,0,25+slidergz.value(),15+slidergz.value());}
+    //ellipse(this.offset+this.it,0,15+slidergz.value(),4+slidergz.value());
 
     pop();
     this.projLoc[0] = this.x +( this.offset + this.it)*cos(this.rot);

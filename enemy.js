@@ -125,7 +125,7 @@ class enemy{
       let qY = projectile[i].projLoc[1]
 
       if (dist(this.x,this.y,lX,qY) < this.diameter-10*this.offset){
-        console.log(cos(projectile.rot));
+        //console.log(cos(projectile.rot));
         this.x = this.x + slidergz.value()*5*cos(projectile[i].rot);
         this.y = this.y + slidergz.value()*5*sin(projectile[i].rot);
         this.health -= 35 + mul*5;
