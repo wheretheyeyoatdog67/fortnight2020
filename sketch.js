@@ -35,6 +35,10 @@ let LastQTime = 0;
 let shopping = false;
 let pauseNextRound = false;
 let fullAuto = false;
+let fireArr = [];
+let fireTimer = [];
+let slimeArrAn = [];
+
 function preload() {
 
   img = loadImage('floor.png');
@@ -51,18 +55,27 @@ function preload() {
   teleports = loadImage("telport.png");
   energy = loadImage("energy.png");
   fire = loadImage("fire.png");
+  fire2 = loadImage("fire2.png");
+  fire3 = loadImage("fire3.png");
   proj1=  loadImage("projectile/proj1.png");
   proj2 =  loadImage("projectile/proj2.png");
 
   proj3 =  loadImage("projectile/proj3.png");
   slime2 = loadImage("slime2.png");
 
+  slimea0 = loadImage("slimeAnimation/slime0.png");
+  slimea1 = loadImage("slimeAnimation/slime1.png");
+  slimea2 = loadImage("slimeAnimation/slime2.png");
+  slimeam1 = loadImage("slimeAnimation/slimem2.png");
+  slimeam2 = loadImage("slimeAnimation/slimem3.png");
+
 }
 
 
 
 function setup() {
-
+  fireArr = [fire,fire2,fire3];
+  slimeArrAn = [slimeam2,slimeam1,slimea0,slimea1,slimea2];
   createCanvas(canvWid, canvHeight);
   player = new player();
   player.lives = 3;

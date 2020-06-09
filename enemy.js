@@ -1,3 +1,7 @@
+
+
+
+
 class enemy{
   constructor(){
     this.ran = random(-1,1);
@@ -25,7 +29,9 @@ class enemy{
     this.it = 0;
     this.rot;
     this.lastShot = 0;
-
+    this.slimeAnIt = 0;
+    this.slimeAnDir = 1;
+    this.slimeTimer = 0;
 
   }
   display(){
@@ -39,8 +45,17 @@ class enemy{
       movePos = false;}
     }else{
       if(this.canShoot == true){image(slime2, this.x, this.y, 1.25*this.diameter*this.randMut,this.diameter*this.randMut);}
-      else
-    image(slime, this.x, this.y, 1.25*this.diameter*this.randMut,this.diameter*this.randMut);
+      else{
+        if (gameClock - this.slimeTimer > 20){
+          this.slimeAnIt = this.slimeAnIt+1*this.slimeAnDir;
+          if(this.slimeAnIt==4 || this.slimeAnIt == 0){
+            this.slimeAnDir*=(-1);
+            console.log(this.slimeAnIt);
+          }
+          this.slimeTimer = gameClock;}
+          image(slimeArrAn[this.slimeAnIt], this.x, this.y, 1.75*this.diameter*this.randMut,1.2*this.diameter*this.randMut);
+      }
+
     if (this.isBoss == false){
     fill(255,0,0)
     rect(this.x-10,this.y+10,20,5);

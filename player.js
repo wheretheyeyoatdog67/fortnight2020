@@ -1,3 +1,6 @@
+let fireIt = 0;
+let fireAnDir = 1;
+
 class player{
   constructor(){
     this.x = 125;
@@ -16,7 +19,16 @@ class player{
     push();
     translate(this.x,this.y);
     rotate(3.14);
-    image(fire,-50,-60, 100,70)
+    if (gameClock - fireTimer > 20){
+      fireIt = fireIt+1*fireAnDir;
+      if(fireIt==2 || fireIt == 0){
+        fireAnDir*=(-1);
+      }
+
+      fireTimer = gameClock;
+    }
+    image(fireArr[fireIt],-50,-60, 100,70);
+
     image(teleports,-30,-20, this.diameter*3 ,this.diameter)
     pop();
     ellipse(this.x, this.y, this.diameter ,this.diameter);
