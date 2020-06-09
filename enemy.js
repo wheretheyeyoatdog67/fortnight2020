@@ -31,9 +31,15 @@ class enemy{
   display(){
     imageMode(CENTER);
     if(newRound == true){
+      if(this.canShoot == true){
+        image(slime2, this.x, this.y, this.diameter*this.randMut,this.diameter*this.randMut);
+        movePos = false;
+      }else{
       image(slime, this.x, this.y, this.diameter*this.randMut,this.diameter*this.randMut);
-      movePos = false;
+      movePos = false;}
     }else{
+      if(this.canShoot == true){image(slime2, this.x, this.y, this.diameter*this.randMut,this.diameter*this.randMut);}
+      else
     image(slime, this.x, this.y, this.diameter*this.randMut,this.diameter*this.randMut);
     if (this.isBoss == false){
     fill(255,0,0)

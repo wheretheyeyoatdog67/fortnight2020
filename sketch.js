@@ -51,7 +51,7 @@ function preload() {
   proj2 =  loadImage("projectile/proj2.png");
 
   proj3 =  loadImage("projectile/proj3.png");
-
+  slime2 = loadImage("slime2.png");
 
 }
 
