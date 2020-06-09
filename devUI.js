@@ -98,6 +98,7 @@ function death(){
   fill(255,0,0);
   stroke(0,0,0);
   text("YOU DIED", 275, 200);
+  fullAuto = false;
   enemies = [];
   song.pause();
   noFill();
@@ -164,7 +165,7 @@ function displayShopContents(){
   fill(255);
   stroke(255,255,0);
   strokeWeight(1);
-  text("Bigger Gun: 650 Points", 255,175);
+  text("Gun DMG: 650 Points", 255,175);
   text("Full Auto: 1000 Points", 255,200);
 }
 
