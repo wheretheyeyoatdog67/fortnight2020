@@ -136,6 +136,7 @@ function PlayerStats(){
 }
 
 function playerCol(){
+  player.bullCol(enemyProjArr);
   for (let i = 0;i<enemies.length;i++){
 
     enemies[i].enemyNum = i;
@@ -145,14 +146,15 @@ function playerCol(){
       hitArr.push(gameClock);
       player.immunity = true;
   //console.log(player.immunity);
-      if (player.lives == 0)
+
+      }
+      if (player.lives <= 0)
       {player.isDead = true;
       song.pause();
       songdeath.play();
-      }
-
 
   }
+
   enemyIsHit(i);
   }
   if (hitArr.length > 0){

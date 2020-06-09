@@ -28,6 +28,7 @@ class player{
   }
   move(xMov,yMov){
     this.wallCol();
+
     this.x += xMov;
     this.y += yMov;
   }
@@ -37,6 +38,24 @@ class player{
     if (this.y < 100)  this.y = 100;
     if (this.y > 365) this.y =365;
   }
+  bullCol(enemyProjArr){
+
+    for(let i = 0;i<enemyProjArr.length;i++){
+    let lX = enemyProjArr[i].projLoc[0]
+    let qY = enemyProjArr[i].projLoc[1]
+    console.log(dist(this.x,this.y,lX,qY));
+    if (dist(this.x,this.y,lX,qY) < 4){
+      //console.log(cos(projectile.rot));
+      this.x = this.x + slidergz.value()*5*cos(enemyProjArr[i].rot);
+      this.y = this.y + slidergz.value()*5*sin(enemyProjArr[i].rot);
+      this.lives -= 1;
+      enemyProjArr[i].removeit = true;
+
+    }
+  }
+}
+
+
 
 
 }
