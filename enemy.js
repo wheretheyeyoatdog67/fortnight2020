@@ -26,6 +26,10 @@ class enemy{
   }
   display(){
     imageMode(CENTER);
+    if(newRound == true){
+      image(slime, this.x, this.y, this.diameter*this.randMut,this.diameter*this.randMut);
+      movePos = false;
+    }else{
     image(slime, this.x, this.y, this.diameter*this.randMut,this.diameter*this.randMut);
     if (this.isBoss == false){
     fill(255,0,0)
@@ -34,14 +38,16 @@ class enemy{
     rect(this.x-10,this.y+10,20*this.health/100,5);}
     else {
       fill(255,0,0)
-      rect(this.x-100,this.y+this.diameter/2,200,5);
+      rect(this.x-50,this.y+this.diameter/2,100,5);
       fill(0,255,0);
-      rect(this.x-100,this.y+this.diameter/2,this.health/10,5);
+      rect(this.x-50,this.y+this.diameter/2,this.health/20,5);
     }
+  }
     imageMode(CORNER);
 
   }
   follow(playerX,playerY){
+    if (movePos == true){
       if (abs(player.x - this.x) > abs(player.y-this.y)){
         if (player.x - this.x > 0){
           this.vx += 1;
@@ -68,6 +74,7 @@ class enemy{
     if (this.vy <= -4){
       this.vy = -4;
     }
+  }
     }
 
     move(){
@@ -155,12 +162,15 @@ function moveEnemies(enemyArr,player){
     enemyArr[i].move();
     enemyArr[i].wallCol();
     enemyArr[i].ballCol(enemyArr);
+
     enemyArr[i].display();
     enemyArr[i].follow(player.x,player.y,enemyArr);
+
   }
 }
 
 function spawnEnemies(){
+
   let val = slider.value();
   if (val == 0){
     val = round;
@@ -168,6 +178,8 @@ function spawnEnemies(){
 
   if (enemies.length == 0 && player.isDead == false) {
     round += 1;
+    newRound = true;
+    newRoundClockOffset = gameClock;
 
   }
   let m = round - 1;

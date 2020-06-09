@@ -25,6 +25,9 @@ let fcheck = 200;
 let bossSpawn = false;
 let bossCount = 1;
 let hitArr = [];
+let newRound = true;
+let newRoundClockOffset = 0;
+let movePos = true;
 
 function preload() {
 
@@ -71,6 +74,7 @@ checkSwap();
 store();
 textUI();
 playerDisp()
+enemyCanMove()
 noStroke();
 moveProjectile();
 moveSpecialProjectiles()
@@ -153,6 +157,12 @@ function playerCol(){
 
   }
 }
+function enemyCanMove(){
+if (gameClock - newRoundClockOffset > 20){
+  newRound = false;
+  movePos = true;
+}}
+
 function immunity(){
   timeIt()
   if (timerValue == 1){
