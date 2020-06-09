@@ -10,7 +10,7 @@ let projectile = [];
 let special = [];
 let specBar = 100;
 let round = 1;
-var timerValue = 10;
+var timerValue = 25;
 let ramp = false;
 let score = 0;
 let groundItems = [];
@@ -157,7 +157,7 @@ function immunity(){
   timeIt()
   if (timerValue == 1){
     player.immunity = false;
-    timerValue = 10;
+    timerValue = 25;
   }
 }
 function timeIt() {
