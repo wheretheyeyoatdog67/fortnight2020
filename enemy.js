@@ -51,14 +51,21 @@ class enemy{
 
   }
   follow(playerX,playerY){
+    let movement = true;
     if (movePos == true){
-      if (abs(player.x - this.x) > abs(player.y-this.y)){
+      if (this.canShoot == true && dist(this.x,this.y,player.x,player.y) < 130){
+        movement = false;
+        this.vx = 0;
+        this.vy = 0;
+      }
+      else movement = true
+      if (abs(player.x - this.x) > abs(player.y-this.y) && movement == true){
         if (player.x - this.x > 0){
           this.vx += 1;
         }
         else this.vx -= 1;
       }
-      else {
+      else if (movement == true){
         if (player.y - this.y > 0 ){
           this.vy += 1;
       }else  {
@@ -97,9 +104,9 @@ class enemy{
         this.isHit = true;
         score += 50;
       }
-      if(this.canShoot == false) {
+
       this.x += this.vx;
-      this.y += this.vy;}
+      this.y += this.vy;
 
     }
 
