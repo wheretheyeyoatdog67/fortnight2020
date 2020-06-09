@@ -20,7 +20,7 @@ function keyDown() {
   }
   if (keyIsDown(81)) {
     if (gameClock - LastQTime > 10){
-    if(round-1 >= 1 && doorEntry == true && curRoom == 0){
+    if(round-1 >= 10 && doorEntry == true && curRoom == 0){
       curRoom = 1;}
     else (curRoom = 0);
     LastQTime = gameClock;

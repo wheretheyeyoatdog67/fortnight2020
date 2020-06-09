@@ -47,9 +47,9 @@ function rampModeTog(){
 }
 function rampMode(){
   if (enemies.length == 0){
-    if (round <= 10){
+    //if (round <= 10){
     spawnEnemies();}
-  }
+  //}
 }
 
 function cellUIflopper(){
