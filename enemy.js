@@ -59,7 +59,7 @@ class enemy{
   follow(playerX,playerY){
     let movement = true;
     if (movePos == true){
-      if (this.canShoot == true && dist(this.x,this.y,player.x,player.y) < 130){
+      if (this.canShoot == true && dist(this.x,this.y,player.x,player.y) < 100){
         movement = false;
         this.vx = 0;
         this.vy = 0;
@@ -101,7 +101,7 @@ class enemy{
         // this.specialHit = false;
         // this.x += this.vx;
         // this.y += this.vy;
-        this.health -= 10;
+        this.health -= 20;
         //this.isHit = true;
 
       }
@@ -170,7 +170,9 @@ class enemy{
       if ((dist(special[i].x,special[i].y,this.x,this.y))<30){
         this.specialHit = true;
       }
+
     }
+    if(special.length == 0) this.specialHit = false;
   }
 }
 function removeNMoveEnemyShot(){

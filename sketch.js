@@ -86,7 +86,8 @@ noStroke();
 moveProjectile();
 moveSpecialProjectiles()
 groundItemsDisplayandCollision();
-playerCol();
+if(player.isDead == false){
+playerCol();}
 PlayerStats()
 teleBuffer();
 specBarUI();
