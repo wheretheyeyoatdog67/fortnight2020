@@ -31,6 +31,7 @@ let movePos = true;
 let curRoom = 0;
 let doorEntry = false;
 let enemyProjArr = [];
+let LastQTime = 0;
 function preload() {
 
   img = loadImage('floor.png');
