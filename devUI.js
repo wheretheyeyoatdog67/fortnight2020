@@ -25,8 +25,11 @@ function devUI(){
   button3.position(85, 380);
   button3.mousePressed(restart);
   buttonhelp = createButton('Controls');
-  buttonhelp.position(650, 380);
+  buttonhelp.position(660, 380);
   buttonhelp.mousePressed(controls);
+  buttonPNR = createButton('Pause/Resume');
+  buttonPNR.position(550, 380);
+  buttonPNR.mousePressed(pauseNextRoundF);
 
 
 
@@ -34,6 +37,12 @@ function devUI(){
   // buttonb.position(33, 85);
 
 
+}
+function pauseNextRoundF(){
+
+  if (pauseNextRound == true){
+    pauseNextRound = false;
+  }else pauseNextRound = true;
 }
 function controls(){
   if (controlAct == false){
@@ -129,32 +138,40 @@ function hearts(){
 function store(){
   image(market,620,100,70,70);
 
-  if(dist(player.x,player.y,365,175)< 120){
+  if(dist(player.x,player.y,650,150)< 20){
     //displayShopContents();
+    stroke(120,70,70);
+    fill(0,70,0);
+    rect(635,125,30,30);
+    fill(255);
+    textSize(20);
+    text("Q",642,145)
     inShop = true;
-
   }
-  else inShop = false;
+  else {inShop = false
+  shopping= false;};
 
 }
 
 function displayShopContents(){
-  fill(70,70,70);
-  rect(20,20,200,200);
   fill(90,90,90);
-  rect(22,22,196,196);
+  stroke(120,70,70);
+  rect(250,120,260,200);
   fill(165,42,42);
-  stroke(255,0,0);
-  text("Le Me : S h o P P E", 32,40);
-  text("---------------------------", 32,49);
+
+  text("Le Me : S h o P P E", 290,145);
+  line(290,150,467,150);
   fill(255);
   stroke(255,255,0);
-  text("Big Gun: 2000 Points", 25,70);
+  strokeWeight(1);
+  text("Bigger Gun: 650 Points", 255,175);
+  text("Full Auto: 1000 Points", 255,200);
 }
 
 function biggunbuy(){
-  gunW += 10;
-  gunH += 10;
+  gunW += 5;
+  gunH += 5;
+  //console.log("buy");
 }
 
 function textUI(){
@@ -194,6 +211,7 @@ function doorEntrySign(){
     fill(0,70,0);
     rect(224,40,30,30);
     fill(255);
+    textSize(20);
     text("Q",230,60)
     doorEntry = true;
   }else doorEntry = false;

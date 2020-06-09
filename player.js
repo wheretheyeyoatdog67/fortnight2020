@@ -43,7 +43,7 @@ class player{
     for(let i = 0;i<enemyProjArr.length;i++){
     let lX = enemyProjArr[i].projLoc[0]
     let qY = enemyProjArr[i].projLoc[1]
-    console.log(dist(this.x,this.y,lX,qY));
+    //console.log(dist(this.x,this.y,lX,qY));
     if (dist(this.x,this.y,lX,qY) < 4){
       //console.log(cos(projectile.rot));
       this.x = this.x + slidergz.value()*5*cos(enemyProjArr[i].rot);
@@ -76,7 +76,7 @@ class gun{
     translate (player.x,player.y);
     rotate(rotFact);
     stroke(255);
-    rect(gunX,gunY,gunW+2*slidergz.value(),gunH+2*slidergz.value());
+    rect(gunX,gunY,gunW,gunH);
     noStroke();
     pop();}
 }

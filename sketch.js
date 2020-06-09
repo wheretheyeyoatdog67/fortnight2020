@@ -2,7 +2,7 @@ let img;
 let cellUIflop = false;
 let canvWid = 800;
 let canvHeight = 400;
-let width = 500;
+let width = 70;
 let height = 400;
 let gameClock = 0;
 var enemies = [];
@@ -32,6 +32,9 @@ let curRoom = 0;
 let doorEntry = false;
 let enemyProjArr = [];
 let LastQTime = 0;
+let shopping = false;
+let pauseNextRound = false;
+let fullAuto = false;
 function preload() {
 
   img = loadImage('floor.png');
@@ -87,8 +90,10 @@ noStroke();
 moveProjectile();
 moveSpecialProjectiles()
 groundItemsDisplayandCollision();
+store();
 if(player.isDead == false){
 playerCol();}
+
 PlayerStats()
 teleBuffer();
 specBarUI();
@@ -96,7 +101,9 @@ specBarUI();
 hearts();
 doorEntrySign();
 runGameMode();
-
+if(shopping == true){
+  displayShopContents();
+}
 
 
 }
@@ -123,7 +130,7 @@ function moveSpecialProjectiles(){
   }}
 }
 function runGameMode(){
-  if (ramp== true) rampMode();
+  if (ramp== true && pauseNextRound == false) rampMode();
 }
 
 function PlayerStats(){
@@ -236,13 +243,4 @@ function teleBuffer(){
     teleArr[i].drawPic();
     teleArr[i].iterations += 1;}
   }
-}
-
-
-
-
-
-
-function mouseClicked() {
-  projectile.push(new proj(player.x, player.y,mouseX,mouseY));
 }

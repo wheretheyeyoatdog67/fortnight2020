@@ -14,13 +14,12 @@ class proj{
     this.spriteSection = 0;
     this.shootTime = gameClock;
     this.isEnemy = isEnemy;
+    this.bigGunMult = 0;
 
   }
   //for translate/rotate push pops.... use 0,0 origin once tranlate to player loc
   move(){
-    if (this.it == 0){
-      this.recoil();
-    }
+
     push();
     translate(this.x,this.y);
     rotate(this.rot);
@@ -30,12 +29,19 @@ class proj{
     stroke(90,80,80);
     fill(0,0,200);
     let deltaT = gameClock - this.shootTime;
+    if(this.isEnemy == false){
+      this.bigGunMult = gunW;
+      if (this.it == 0){
+        this.recoil();
+      }
+    }
+    
     if (deltaT < 5){
-      image(proj1,this.offset+this.it,-15,35+slidergz.value(),35+slidergz.value());
+      image(proj1,this.offset+this.it,-15,35+this.bigGunMult,35+this.bigGunMult);
     }else if (deltaT >= 5 && deltaT < 15){
-      image(proj2,this.offset+this.it,-15,35+slidergz.value(),35+slidergz.value());
+      image(proj2,this.offset+this.it,-15,35+this.bigGunMult,35+this.bigGunMult);
     }else {
-    image(proj3,this.offset+this.it,-15,35+slidergz.value(),35+slidergz.value());}
+    image(proj3,this.offset+this.it,-15,35+this.bigGunMult,35+this.bigGunMult);}
     //ellipse(this.offset+this.it,0,15+slidergz.value(),4+slidergz.value());
 
     pop();
@@ -49,10 +55,9 @@ class proj{
   }
   recoil(){
     {
-      let mul = slidergz.value();
 
-      player.x += mul*2*-cos(this.rot);
-      player.y += mul*2*-sin(this.rot);
+      player.x += 0.2*this.bigGunMult*-cos(this.rot);
+      player.y += 0.2*this.bigGunMult*-sin(this.rot);
     }
   }
 

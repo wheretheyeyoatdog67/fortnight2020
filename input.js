@@ -23,6 +23,11 @@ function keyDown() {
     if(round-1 >= 10 && doorEntry == true && curRoom == 0){
       curRoom = 1;}
     else (curRoom = 0);
+    if(inShop == true){
+      shopping = true;
+    }
+
+
     LastQTime = gameClock;
   }
 
@@ -30,7 +35,6 @@ function keyDown() {
   if (keyIsDown(69)) {
     if(player.teleport > 0){
     if(gameClock - lastTele > 100){
-
     px = player.x;
     py = player.y;
     player.x = mouseX;
@@ -40,6 +44,7 @@ function keyDown() {
   player.teleport -= 1;
 }
 
+
   }
 
 }
@@ -47,6 +52,26 @@ function keyDown() {
 
 }
 function mouseClicked(event) {
-  projectile.push(new proj(player.x, player.y,mouseX,mouseY,false));
+  if (shopping == true){
+    if(mouseX>256 && mouseX < 470 && mouseY > 160 && mouseY < 180){
+      if (score > 650){
+        biggunbuy();
+        score -= 650;}}
+    else if (mouseX>256 && mouseX < 470 && mouseY > 185 && mouseY < 200){
+      if (score > 1000){
+        fullAuto = true;
+        score -= 1000;}}
+    }
+    
+  else if (fullAuto == false) projectile.push(new proj(player.x, player.y,mouseX,mouseY,false));
 
+}
+function mousePressed() {
+  locked = true;
+}
+function mouseDragged() {
+  if (locked) {
+    if (fullAuto == true)
+    projectile.push(new proj(player.x, player.y,mouseX,mouseY,false));
+  }
 }

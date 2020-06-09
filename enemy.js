@@ -32,15 +32,15 @@ class enemy{
     imageMode(CENTER);
     if(newRound == true){
       if(this.canShoot == true){
-        image(slime2, this.x, this.y, this.diameter*this.randMut,this.diameter*this.randMut);
+        image(slime2, this.x, this.y, 1.25*this.diameter*this.randMut,this.diameter*this.randMut);
         movePos = false;
       }else{
-      image(slime, this.x, this.y, this.diameter*this.randMut,this.diameter*this.randMut);
+      image(slime, this.x, this.y, 1.25*this.diameter*this.randMut,this.diameter*this.randMut);
       movePos = false;}
     }else{
-      if(this.canShoot == true){image(slime2, this.x, this.y, this.diameter*this.randMut,this.diameter*this.randMut);}
+      if(this.canShoot == true){image(slime2, this.x, this.y, 1.25*this.diameter*this.randMut,this.diameter*this.randMut);}
       else
-    image(slime, this.x, this.y, this.diameter*this.randMut,this.diameter*this.randMut);
+    image(slime, this.x, this.y, 1.25*this.diameter*this.randMut,this.diameter*this.randMut);
     if (this.isBoss == false){
     fill(255,0,0)
     rect(this.x-10,this.y+10,20,5);
@@ -146,7 +146,7 @@ class enemy{
         //console.log(cos(projectile.rot));
         this.x = this.x + slidergz.value()*5*cos(projectile[i].rot);
         this.y = this.y + slidergz.value()*5*sin(projectile[i].rot);
-        this.health -= 35 + mul*5;
+        this.health -= 20 + projectile[i].bigGunMult;
         projetile[i].removeit = true;
         //this.isHit = true;
         specBar += 3;
