@@ -177,7 +177,7 @@ function removeNMoveEnemyShot(){
 function moveEnemies(enemyArr,player){
   removeNMoveEnemyShot();
   for (let i = 0; i<enemyArr.length; i++) {
-    if (gameClock-enemyArr[i].lastShot > 20 && enemyArr[i].canShoot == true){
+    if (gameClock-enemyArr[i].lastShot > 100 && enemyArr[i].canShoot == true){
       enemyArr[i].lastShot = gameClock;
       enemyProjArr.push(new proj(enemyArr[i].x, enemyArr[i].y,player.x,player.y,true));
 
