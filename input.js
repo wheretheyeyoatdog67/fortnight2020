@@ -61,9 +61,21 @@ function mouseClicked(event) {
       if (score > 1000){
         fullAuto = true;
         score -= 1000;}}
+    else if (mouseX>256 && mouseX < 470 && mouseY > 205 && mouseY < 220){
+          if (score >= 1000){
+            autoAim = true;
+            score -= 1000;}}
     }
-    
-  else if (fullAuto == false) projectile.push(new proj(player.x, player.y,mouseX,mouseY,false));
+
+
+  else if (fullAuto == false) {
+    if (autoAim == true && enemies.length > 0){
+      projectile.push(new proj(player.x, player.y,enemies[0].x,enemies[0].y,false));
+    }else {
+      projectile.push(new proj(player.x, player.y,mouseX,mouseY,false));
+    }
+    }
+
 
 }
 function mousePressed() {

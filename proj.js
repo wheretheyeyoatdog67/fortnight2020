@@ -16,6 +16,7 @@ class proj{
     this.isEnemy = isEnemy;
     this.bigGunMult = 0;
 
+
   }
   //for translate/rotate push pops.... use 0,0 origin once tranlate to player loc
   move(){
@@ -35,7 +36,7 @@ class proj{
         this.recoil();
       }
     }
-    
+
     if (deltaT < 5){
       image(proj1,this.offset+this.it,-15,35+this.bigGunMult,35+this.bigGunMult);
     }else if (deltaT >= 5 && deltaT < 15){
@@ -100,4 +101,8 @@ class tele{
   line(this.x,this.y,this.teleX,this.teleY);
   noStroke();
   }
+}
+
+class starProj(){
+  
 }

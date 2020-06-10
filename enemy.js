@@ -94,17 +94,17 @@ class enemy{
       }
     }
 
-    if (this.vx >= 4){
-      this.vx = 4;
+    if (this.vx >= 3){
+      this.vx = 3;
     }
-    if (this.vx <= -4){
-      this.vx = -4;
+    if (this.vx <= -3){
+      this.vx = -3;
     }
-    if (this.vy >= 4){
-      this.vy = 4;
+    if (this.vy >= 3){
+      this.vy = 3;
     }
-    if (this.vy <= -4){
-      this.vy = -4;
+    if (this.vy <= -3){
+      this.vy = -3;
     }
   }
     }
@@ -123,7 +123,10 @@ class enemy{
 
       if (this.health <= 0){
         this.isHit = true;
-        score += 50;
+        if (this.isBoss == true){
+          score += 250;
+        }
+        else score += 50;
       }
 
       this.x += this.vx;
@@ -159,8 +162,8 @@ class enemy{
 
       if (dist(this.x,this.y,lX,qY) < this.diameter-10*this.offset){
         //console.log(cos(projectile.rot));
-        this.x = this.x + slidergz.value()*5*cos(projectile[i].rot);
-        this.y = this.y + slidergz.value()*5*sin(projectile[i].rot);
+        this.x = this.x + 2*projectile[i].bigGunMult*cos(projectile[i].rot);
+        this.y = this.y + 2*projectile[i].bigGunMult*sin(projectile[i].rot);
         this.health -= 20 + projectile[i].bigGunMult;
         projetile[i].removeit = true;
         //this.isHit = true;

@@ -113,7 +113,7 @@ function restart(){
   specBar = 100;
   player.lives = 3;
   song.play();
-  score = 0;
+  //score = 0;
   player.teleport = 3;
   bossCount = 1;
   hitArr = [];
@@ -159,14 +159,15 @@ function displayShopContents(){
   stroke(120,70,70);
   rect(250,120,260,200);
   fill(165,42,42);
-
+  textSize(20);
   text("Le Me : S h o P P E", 290,145);
   line(290,150,467,150);
   fill(255);
   stroke(255,255,0);
   strokeWeight(1);
   text("Gun DMG: 650 Points", 255,175);
-  text("Full Auto: 1000 Points", 255,200);
+  text("Flame Thrower: 1000 Points", 255,225);
+  text("Auto Aim: 1000 Points", 255,200);
 }
 
 function biggunbuy(){

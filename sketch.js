@@ -38,6 +38,7 @@ let fullAuto = false;
 let fireArr = [];
 let fireTimer = [];
 let slimeArrAn = [];
+let autoAim = false;
 
 function preload() {
 
