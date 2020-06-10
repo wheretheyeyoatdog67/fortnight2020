@@ -57,12 +57,12 @@ function mouseClicked(event) {
       if (score > 650){
         biggunbuy();
         score -= 650;}}
-    else if (mouseX>256 && mouseX < 470 && mouseY > 185 && mouseY < 200){
-      if (score > 1000){
+    else if (mouseX>256 && mouseX < 470 && mouseY > 205 && mouseY < 220){
+      if (score < 1000){
         fullAuto = true;
         score -= 1000;}}
-    else if (mouseX>256 && mouseX < 470 && mouseY > 205 && mouseY < 220){
-          if (score >= 1000){
+        else if (mouseX>256 && mouseX < 470 && mouseY > 185 && mouseY < 200){
+          if (score < 1000){
             autoAim = true;
             score -= 1000;}}
     }

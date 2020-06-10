@@ -102,7 +102,3 @@ class tele{
   noStroke();
   }
 }
-
-class starProj(){
-  
-}
